@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Пример чата с веб-сокетом</title>
+</head>
+<body>
+  <script>
+    let ws = new WebSocket("ws://localhost:8080");
+    // выводим новые сообщения в консоль
+    ws.onmessage = ({data}) => {
+      data.text().then(res=>{
+        console.log(res);
+      });
+    }
+    // отправляем сообщение
+    ws.onopen = () => ws.send('Text');
+  </script>
+</body>
+</html>
+<!-- как достучаться до ip https://qna.habr.com/q/886313 -->
